@@ -25,7 +25,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
       border: '1px solid #f1f5f9',
       transition: 'all 0.3s ease',
     }}
-    bodyStyle={{ padding: 24 }}
+   
   >
     <div style={{ 
       fontSize: 48, 
@@ -66,7 +66,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
       height: '100%',
       border: '1px solid #f1f5f9',
     }}
-    bodyStyle={{ padding: 24 }}
+
   >
     <div style={{ marginBottom: 16 }}>
       {'★'.repeat(rating)}{'☆'.repeat(5 - rating)}
@@ -137,7 +137,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
       position: 'relative',
       overflow: 'visible',
     }}
-    bodyStyle={{ padding: 32 }}
+
   >
     {isPopular && (
       <Tag 

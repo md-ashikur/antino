@@ -1,87 +1,24 @@
 'use client';
 
 import React from 'react';
-import { 
-  ConfigProvider, 
-  Layout, 
-  Typography, 
-  Button, 
-  Row, 
-  Col, 
-  Space, 
-  Menu,
-  Divider
-} from 'antd';
-import { 
-  RocketOutlined, 
-  SecurityScanOutlined,
-  ThunderboltOutlined,
-  GlobalOutlined
-} from '@ant-design/icons';
+import { ConfigProvider, Typography, Button, Row, Col } from 'antd';
+import { SecurityScanOutlined, ThunderboltOutlined, GlobalOutlined } from '@ant-design/icons';
 import customThemeConfig from '../../../theme/themeConfig';
+import Navbar from '../../components/Navbar';
+import FooterSection from '../../components/Footer';
 import { FeatureCard, TestimonialCard, StatsCard, PricingCard } from '../../components/CustomComponents';
 
-const { Header, Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
 
 export default function LandingPage() {
   return (
     <ConfigProvider theme={customThemeConfig}>
-      <Layout>
-        {/* Header */}
-        <Header 
-          style={{ 
-            background: '#ffffff', 
-            padding: '0 20px',
-            boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
-            position: 'sticky',
-            top: 0,
-            zIndex: 1000
-          }}
-        >
-          <Row justify="space-between" align="middle" style={{ height: '100%' }}>
-            <Col xs={12} sm={8} md={6}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <RocketOutlined style={{ fontSize: 24, color: '#6366f1', marginRight: 8 }} />
-                <Title level={4} style={{ margin: 0, color: '#0f172a', fontSize: '18px' }}>
-                  AntDesign Pro
-                </Title>
-              </div>
-            </Col>
-            
-            <Col xs={0} md={12} style={{ textAlign: 'center' }}>
-              <Menu 
-                mode="horizontal" 
-                style={{ 
-                  border: 'none', 
-                  background: 'transparent',
-                  fontSize: 16,
-                  fontWeight: 500,
-                  justifyContent: 'center'
-                }}
-                items={[
-                  { key: 'home', label: 'Home' },
-                  { key: 'features', label: 'Features' },
-                  { key: 'pricing', label: 'Pricing' },
-                  { key: 'about', label: 'About' },
-                ]}
-              />
-            </Col>
-            
-            <Col xs={12} sm={8} md={6} style={{ textAlign: 'right' }}>
-              <Space size="small">
-                <Button type="text" size="middle" style={{ display: 'none' }}>Sign In</Button>
-                <Button type="primary" size="middle">Get Started</Button>
-              </Space>
-            </Col>
-          </Row>
-        </Header>
+      <>
 
-        <Content>
           {/* Hero Section */}
           <section style={{ 
             background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-            padding: '60px 20px 40px',
+            padding: '60px 40px',
             textAlign: 'center',
             color: 'white'
           }}>
@@ -121,7 +58,7 @@ export default function LandingPage() {
                     background: 'white', 
                     color: '#6366f1',
                     border: 'none',
-                    fontWeight: 600,
+                    fontWeight: 400,
                     height: 48,
                     fontSize: 16
                   }}
@@ -135,8 +72,9 @@ export default function LandingPage() {
                   block
                   style={{ 
                     color: 'white', 
-                    borderColor: 'white',
-                    fontWeight: 600,
+                    background: '#6366f1',
+                    border: '#383bd5ff',
+                    fontWeight: 400,
                     height: 48,
                     fontSize: 16
                   }}
@@ -341,63 +279,11 @@ export default function LandingPage() {
                 fontWeight: 600
               }}
             >
-              Start Your Free Trial
+              Start Free Trial
             </Button>
           </section>
-        </Content>
-
-        {/* Footer */}
-        <Footer style={{ 
-          background: '#0f172a', 
-          color: 'white',
-          padding: '40px 20px 20px'
-        }}>
-          <Row gutter={[24, 32]}>
-            <Col xs={24} md={6}>
-              <div style={{ marginBottom: 24 }}>
-                <RocketOutlined style={{ fontSize: 24, color: '#6366f1', marginRight: 8 }} />
-                <Text style={{ fontSize: 18, fontWeight: 600, color: 'white' }}>AntDesign Pro</Text>
-              </div>
-              <Paragraph style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>
-                Building the future of web applications with beautiful, accessible components.
-              </Paragraph>
-            </Col>
-            <Col xs={12} sm={6} md={6}>
-              <Title level={5} style={{ color: 'white', marginBottom: 16, fontSize: 16 }}>Product</Title>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Features</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Components</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Templates</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Themes</Text>
-              </div>
-            </Col>
-            <Col xs={12} sm={6} md={6}>
-              <Title level={5} style={{ color: 'white', marginBottom: 16, fontSize: 16 }}>Support</Title>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Documentation</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Help Center</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Contact Us</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Status</Text>
-              </div>
-            </Col>
-            <Col xs={12} sm={6} md={6}>
-              <Title level={5} style={{ color: 'white', marginBottom: 16, fontSize: 16 }}>Company</Title>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>About</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Blog</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Careers</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>Press</Text>
-              </div>
-            </Col>
-          </Row>
-          <Divider style={{ backgroundColor: 'rgba(255,255,255,0.1)', margin: '40px 0 20px' }} />
-          <div style={{ textAlign: 'center' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>
-              © 2025 AntDesign Pro. All rights reserved.
-            </Text>
-          </div>
-        </Footer>
-      </Layout>
+     
+      </>
     </ConfigProvider>
   );
 }
