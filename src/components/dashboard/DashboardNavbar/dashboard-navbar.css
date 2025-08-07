@@ -1,0 +1,6 @@
+/* Dashboard active menu item */
+.dashboard-menu-active {
+  background: #4880FF !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
