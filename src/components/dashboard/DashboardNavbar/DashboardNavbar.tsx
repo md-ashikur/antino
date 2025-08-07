@@ -116,13 +116,13 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ children }) => {
           zIndex: 100,
           background: '#FFFFFF',
           borderRight: 'none',
-          boxShadow: '2px 0 8px 0 rgba(0,0,0,0.08)',
+          boxShadow: '0px 0 1px 0 rgba(0,0,0,0.08)',
           overflow: 'hidden',
         }}
         width={220}
         breakpoint="lg"
       >
-        <div style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: 8 }}>
+        <div style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center',  marginRight: 8 }}>
           <CustomIcon name="dashboard" size={36} />
         </div>
         <Menu
@@ -137,7 +137,7 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ children }) => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  padding: '16px 0',
+                  padding: '0',
                 },
               }))
             : menuItems
@@ -212,10 +212,8 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ children }) => {
             margin: '32px 16px',
             padding: '32px 24px',
             minHeight: 280,
-            background: '#fff',
             borderRadius: 18,
             boxSizing: 'border-box',
-            boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)',
             display: 'flex',
             flexDirection: 'column',
             gap: 16,

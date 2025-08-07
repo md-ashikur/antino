@@ -10,6 +10,7 @@ import {
   ArrowUpOutlined,
   ArrowDownOutlined,
 } from "@ant-design/icons";
+import DealsTable from "@/components/dashboard/DealsTable/DealsTable";
 
 export default function page() {
   const cardData = [
@@ -26,7 +27,7 @@ export default function page() {
     },
     {
       title: "Total Order",
-      value: "$8,900",
+      value: "10293",
       icon: <ShoppingCartOutlined style={{ fontSize: 32, color: "#10b981" }} />,
       color: "#10b981",
       iconBg: "rgba(16,185,129,0.21)",
@@ -37,7 +38,7 @@ export default function page() {
     },
     {
       title: "Total Sales",
-      value: "320",
+      value: "$89,000",
       icon: <DollarOutlined style={{ fontSize: 32, color: "#f59e0b" }} />,
       color: "#f59e0b",
       iconBg: "rgba(245,158,11,0.21)",
@@ -60,7 +61,8 @@ export default function page() {
   ];
 
   return (
-    <div>
+   <div>
+     <div>
       <Typography.Title level={2} style={{ margin: 0, fontWeight: 700 }}>
         Dashboard
       </Typography.Title>
@@ -138,5 +140,9 @@ export default function page() {
         </div>
       </div>
     </div>
+
+
+    <DealsTable/>
+   </div>
   );
 }

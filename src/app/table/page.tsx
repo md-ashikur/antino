@@ -1,83 +1,83 @@
 'use client';
 
-import React from 'react';
-import { Table } from 'antd';
-import type { TableColumnsType } from 'antd';
+import React, { useState } from 'react';
+import { Table, Select, Typography } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
 
 interface DataType {
   key: React.Key;
-  team: string;
-  name: string;
-  age: number;
-  address: string;
-  description: string;
+  product: string;
+  location: string;
+  datetime: string;
+  price: string;
+  amount: number;
+  status: string;
 }
 
-const columns: TableColumnsType<DataType> = [
-  {
-    title: 'Team',
-    dataIndex: 'team',
-    key: 'team',
-    onCell: (__, index = 0) => (index % 2 === 0 ? { rowSpan: 2 } : { rowSpan: 0 }),
-    width: 100,
-  },
-  Table.EXPAND_COLUMN,
-  { title: 'Name', dataIndex: 'name', key: 'name', width: 150 },
-  { title: 'Age', dataIndex: 'age', key: 'age' },
-  { title: 'Address', dataIndex: 'address', key: 'address' },
-  {
-    title: 'Action',
-    dataIndex: '',
-    key: 'x',
-    render: () => <a>Delete</a>,
-  },
+const columns: ColumnsType<DataType> = [
+  { title: 'Product Name', dataIndex: 'product', key: 'product' },
+  { title: 'Location', dataIndex: 'location', key: 'location' },
+  { title: 'Date - Time', dataIndex: 'datetime', key: 'datetime' },
+  { title: 'Price', dataIndex: 'price', key: 'price' },
+  { title: 'Amount', dataIndex: 'amount', key: 'amount' },
+  { title: 'Status', dataIndex: 'status', key: 'status', render: (status: string) => (
+    <span style={{
+      color:
+        status === 'Completed' ? '#10b981' :
+        status === 'Pending' ? '#f59e0b' :
+        status === 'Cancelled' ? '#ef4444' : '#64748b',
+      fontWeight: 600
+    }}>{status}</span>
+  ) },
 ];
 
-const data: DataType[] = [
-  {
-    key: 1,
-    team: 'Team A',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    description: 'My name is John Brown, I am 32 years old, living in New York No. 1 Lake Park.',
-  },
-  {
-    key: 2,
-    team: 'Team A',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    description: 'My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park.',
-  },
-  {
-    key: 3,
-    team: 'Team B',
-    name: 'Not Expandable',
-    age: 29,
-    address: 'Jiangsu No. 1 Lake Park',
-    description: 'This not expandable',
-  },
-  {
-    key: 4,
-    team: 'Team B',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    description: 'My name is Joe Black, I am 32 years old, living in Sydney No. 1 Lake Park.',
-  },
-];
+const demoData: Record<string, DataType[]> = {
+  January: [
+    { key: 1, product: 'iPhone 15', location: 'New York', datetime: '2025-01-12 10:30', price: '$999', amount: 2, status: 'Completed' },
+    { key: 2, product: 'MacBook Pro', location: 'London', datetime: '2025-01-15 14:20', price: '$2499', amount: 1, status: 'Pending' },
+    { key: 3, product: 'AirPods Pro', location: 'Berlin', datetime: '2025-01-18 09:10', price: '$249', amount: 3, status: 'Completed' },
+    { key: 4, product: 'iPad Air', location: 'Tokyo', datetime: '2025-01-22 16:45', price: '$599', amount: 1, status: 'Cancelled' },
+  ],
+  February: [
+    { key: 1, product: 'Galaxy S24', location: 'Seoul', datetime: '2025-02-03 11:00', price: '$899', amount: 2, status: 'Completed' },
+    { key: 2, product: 'Surface Pro', location: 'San Francisco', datetime: '2025-02-10 13:30', price: '$1299', amount: 1, status: 'Pending' },
+    { key: 3, product: 'Pixel 8', location: 'Paris', datetime: '2025-02-14 15:00', price: '$799', amount: 2, status: 'Completed' },
+    { key: 4, product: 'Apple Watch', location: 'Sydney', datetime: '2025-02-20 17:20', price: '$399', amount: 1, status: 'Completed' },
+  ],
+  March: [
+    { key: 1, product: 'PlayStation 5', location: 'Los Angeles', datetime: '2025-03-05 12:00', price: '$499', amount: 1, status: 'Completed' },
+    { key: 2, product: 'Xbox Series X', location: 'Toronto', datetime: '2025-03-12 14:40', price: '$499', amount: 1, status: 'Pending' },
+    { key: 3, product: 'Nintendo Switch', location: 'Rome', datetime: '2025-03-18 10:15', price: '$299', amount: 2, status: 'Completed' },
+    { key: 4, product: 'Kindle Paperwhite', location: 'Amsterdam', datetime: '2025-03-25 18:30', price: '$129', amount: 1, status: 'Cancelled' },
+  ],
+};
 
-const TablePage: React.FC = () => (
-  <Table<DataType>
-    bordered
-    columns={columns}
-    expandable={{
-      expandedRowOffset: 3,
-      expandedRowRender: (record) => <div>{record.description}</div>,
-    }}
-    dataSource={data}
-  />
-);
+
+const months = Object.keys(demoData);
+
+const TablePage: React.FC = () => {
+  const [selectedMonth, setSelectedMonth] = useState(months[0]);
+
+  return (
+    <div style={{ maxWidth: 1100, margin: '0 auto', padding: 24 }}>
+      <Typography.Title level={3} style={{ marginBottom: 24 }}>Product Sales</Typography.Title>
+      <div style={{ marginBottom: 24, display: 'flex', alignItems: 'center', gap: 16 }}>
+        <span style={{ fontWeight: 500 }}>Month:</span>
+        <Select
+          value={selectedMonth}
+          onChange={setSelectedMonth}
+          options={months.map(m => ({ label: m, value: m }))}
+          style={{ width: 160 }}
+        />
+      </div>
+      <Table<DataType>
+        bordered
+        columns={columns}
+        dataSource={demoData[selectedMonth]}
+        pagination={{ pageSize: 6 }}
+      />
+    </div>
+  );
+};
 
 export default TablePage;
