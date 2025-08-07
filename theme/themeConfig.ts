@@ -36,6 +36,7 @@ const theme: ThemeConfig = {
     fontSizeHeading3: 24,
     fontSizeHeading4: 20,
     fontSizeHeading5: 16,
+    colorTextHeading: '#202224',
     
     // Spacing
     marginLG: 24,
