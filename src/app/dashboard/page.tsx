@@ -11,6 +11,7 @@ import {
   ArrowDownOutlined,
 } from "@ant-design/icons";
 import DealsTable from "@/components/dashboard/DealsTable/DealsTable";
+import SalesDetails from "@/components/dashboard/SalesDetails/SalesDetails";
 
 export default function page() {
   const cardData = [
@@ -113,6 +114,8 @@ export default function page() {
                 background: card.iconBg,
                 padding: 16,
                 borderRadius: '23px',
+                width: 60,
+                height: 60,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center"
@@ -142,6 +145,8 @@ export default function page() {
     </div>
 
 
+
+<SalesDetails/>
     <DealsTable/>
    </div>
   );
