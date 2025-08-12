@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Typography, Card } from "antd";
+import { Typography, Card, Space } from "antd";
 import {
   UserOutlined,
   ShoppingCartOutlined,
@@ -62,7 +62,7 @@ export default function page() {
   ];
 
   return (
-   <div>
+   <Space direction="vertical" size="large">
      <div>
       <Typography.Title level={2} style={{ margin: 0, fontWeight: 700 }}>
         Dashboard
@@ -148,6 +148,6 @@ export default function page() {
 
 <SalesDetails/>
     <DealsTable/>
-   </div>
+   </Space>
   );
 }
