@@ -62,92 +62,99 @@ export default function page() {
   ];
 
   return (
-   <Space direction="vertical" size="large">
-     <div>
-      <Typography.Title level={2} style={{ margin: 0, fontWeight: 700 }}>
-        Dashboard
-      </Typography.Title>
+    <Space direction="vertical" size="large">
+      <div>
+        <Typography.Title level={2} style={{ margin: 0, fontWeight: 700 }}>
+          Dashboard
+        </Typography.Title>
 
-      <div style={{ marginTop: 32 }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 24,
-          }}
-        >
-          {cardData.map((card, idx) => (
-            <Card
-              key={card.title}
-              style={{
-                borderRadius: 16,
-                boxShadow: "0 2px 8px 0 rgba(0,0,0,0.06)",
-                border: "none",
-                background: "#FFFFFF",
-                position: "relative",
-              }}
-          
-            >
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                <Typography.Title
-                  level={5}
-                  style={{ margin: 0, color: card.color, }}
-                >
-                  {card.title}
-                </Typography.Title>
-
+        <div style={{ marginTop: 32 }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: 24,
+            }}
+          >
+            {cardData.map((card, idx) => (
+              <Card
+                key={card.title}
+                style={{
+                  borderRadius: 16,
+                  boxShadow: "0 2px 8px 0 rgba(0,0,0,0.06)",
+                  border: "none",
+                  background: "#FFFFFF",
+                  position: "relative",
+                }}
+              >
                 <div
                   style={{
-                    fontSize: 28,
-                    fontWeight: 700,
-              
-                    color: "#202224",
-                    
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 16,
                   }}
                 >
-                  {card.value}
-                </div>
-              </div>
+                  <div
+                    style={{ display: "flex", flexDirection: "column", gap: 4 }}
+                  >
+                    <Typography.Title
+                      level={5}
+                      style={{ margin: 0, color: card.color }}
+                    >
+                      {card.title}
+                    </Typography.Title>
 
-              <div style={{
-                background: card.iconBg,
-                padding: 16,
-                borderRadius: '23px',
-                width: 60,
-                height: 60,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
-                {card.icon}
-              </div>
-              </div>
-              <div style={{ color: "#64748b", marginTop: 16,  }}>
-                {card.trend === "up" ? (
-                  <ArrowUpOutlined
-                    style={{ color: card.percentColor, marginRight: 4 }}
-                  />
-                ) : (
-                  <ArrowDownOutlined
-                    style={{ color: card.percentColor, marginRight: 4 }}
-                  />
-                )}
-                <span style={{ color: card.percentColor, fontWeight: 600 }}>
-                  {card.percent}%
-                </span>{" "}
-                {card.desc}
-              </div>
-            </Card>
-          ))}
+                    <div
+                      style={{
+                        fontSize: 28,
+                        fontWeight: 700,
+
+                        color: "#202224",
+                      }}
+                    >
+                      {card.value}
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      background: card.iconBg,
+                      padding: 16,
+                      borderRadius: "23px",
+                      width: 60,
+                      height: 60,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {card.icon}
+                  </div>
+                </div>
+                <div style={{ color: "#64748b", marginTop: 16 }}>
+                  {card.trend === "up" ? (
+                    <ArrowUpOutlined
+                      style={{ color: card.percentColor, marginRight: 4 }}
+                    />
+                  ) : (
+                    <ArrowDownOutlined
+                      style={{ color: card.percentColor, marginRight: 4 }}
+                    />
+                  )}
+                  <span style={{ color: card.percentColor, fontWeight: 600 }}>
+                    {card.percent}%
+                  </span>{" "}
+                  {card.desc}
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
 
-
-
-<SalesDetails/>
-    <DealsTable/>
-   </Space>
+      <SalesDetails />
+      <DealsTable />
+    </Space>
   );
 }

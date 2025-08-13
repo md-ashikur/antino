@@ -1,11 +1,12 @@
 'use client';
 
+import Products from '@/components/dashboard/products/Products';
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      product page content goes here
+     <Products />
     </div>
   )
 }
