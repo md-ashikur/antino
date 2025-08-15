@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Layout, Menu, Button, Image } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined, SearchOutlined, BellOutlined } from '@ant-design/icons';
+import { MenuUnfoldOutlined, MenuFoldOutlined, SearchOutlined, BellOutlined, CalendarOutlined } from '@ant-design/icons';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import CustomIcon from '../../CustomIcon';
@@ -24,6 +24,7 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ children }) => {
     if (pathname.startsWith('/dashboard/inbox')) return '3';
     if (pathname.startsWith('/dashboard/orders')) return '4';
     if (pathname.startsWith('/dashboard/stock')) return '5';
+  if (pathname.startsWith('/dashboard/calendar')) return '6';
     return '0';
   };
 
@@ -99,6 +100,18 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ children }) => {
         </span>
       ),
       className: getSelectedKey() === '5' ? 'dashboard-menu-active' : '',
+    },
+    {
+      key: '6',
+      icon: <CalendarOutlined style={{ fontSize: 18, color: getSelectedKey() === '6' ? '#fff' : '#202224' }} />,
+      label: (
+        <span style={{ display: 'flex', alignItems: 'center', marginLeft: '10px' }}>
+          <Link href="/dashboard/calendar" style={{ color: getSelectedKey() === '6' ? '#fff' : undefined }}>
+            Calendar
+          </Link>
+        </span>
+      ),
+      className: getSelectedKey() === '6' ? 'dashboard-menu-active' : '',
     },
   ];
 

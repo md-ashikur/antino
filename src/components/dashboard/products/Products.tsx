@@ -30,7 +30,7 @@ const carouselData = [
 export default function Products() {
   return (
     <div style={{ maxHeight: '40vh', minHeight: 220, width: '100%', maxWidth: 600, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-     product page content 
+     Product Page Content
     </div>
   )
 }
